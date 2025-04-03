@@ -6,14 +6,14 @@ bool isImageOnScreen(const std::string& screenPath, const std::string& templateP
         // Load screenshot (replace this with real screen capture later)
         cv::Mat screenshot = cv::imread(screenPath);
         if (screenshot.empty()) {
-            std::cerr << "❌ Failed to load screenshot image: " << screenPath << "\n";
+            std::cerr << "Failed to load screenshot image: " << screenPath << "\n";
             return false;
         }
 
         // Load template image
         cv::Mat templ = cv::imread(templatePath);
         if (templ.empty()) {
-            std::cerr << "❌ Failed to load template image: " << templatePath << "\n";
+            std::cerr << "Failed to load template image: " << templatePath << "\n";
             return false;
         }
 
@@ -25,16 +25,16 @@ bool isImageOnScreen(const std::string& screenPath, const std::string& templateP
         cv::Point minLoc, maxLoc;
         cv::minMaxLoc(result, &minVal, &maxVal, &minLoc, &maxLoc);
 
-        std::cout << "🔍 Match confidence: " << maxVal << "\n";
+        std::cout << "Match confidence: " << maxVal << "\n";
         if (maxVal >= threshold) {
-            std::cout << "✅ Image found on screen at: " << maxLoc << "\n";
+            std::cout << "Image found on screen at: " << maxLoc << "\n";
             return true;
         } else {
-            std::cout << "❌ Image not found.\n";
+            std::cout << "Image not found.\n";
             return false;
         }
     } catch (const std::exception& e) {
-        std::cerr << "⚠️ Exception: " << e.what() << "\n";
+        std::cerr << "⚠Exception: " << e.what() << "\n";
         return false;
     }
 }
