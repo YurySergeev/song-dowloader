@@ -34,7 +34,7 @@ bool isImageOnScreen(const std::string& screenPath, const std::string& templateP
             return false;
         }
     } catch (const std::exception& e) {
-        std::cerr << "⚠Exception: " << e.what() << "\n";
+        std::cerr << "Exception: " << e.what() << "\n";
         return false;
     }
 }
